@@ -1,8 +1,11 @@
 ![Open Source Love](https://img.shields.io/badge/open-source-lightgrey?style=for-the-badge&logo=github)
-![](https://img.shields.io/badge/Magento-2.3.x-orange?style=for-the-badge&logo=magento)
 ![](https://img.shields.io/badge/Magento-2.4.x-orange?style=for-the-badge&logo=magento)
 ![](https://img.shields.io/badge/Maintained-yes-gren?style=for-the-badge&logo=magento)
+![](https://img.shields.io/badge/PHP-7.4.x-blue?style=for-the-badge&logo=php)
+![](https://img.shields.io/badge/version-BETA-yellowgreen?style=for-the-badge)
+
 # Product Collective Packages Module for Magento 2 / Adobe Commerce
+#### (BETA version)
 
 [![Screenshot-at-22-00-40.png](https://i.postimg.cc/HWtnvbMT/Screenshot-at-22-00-40.png)](https://postimg.cc/t7Y9YZDc)
 
@@ -46,5 +49,5 @@ php bin/magento setup:upgrade
 
 ## Development of this module and versions:
 * `1.0.0` - Initial release of this module
-* `1.1.0` - adding support for GraphQL and REST API
-* `1.2.0` - adding support for other product types products
+* `1.1.0` - (`In Development`) adding support for GraphQL and REST API
+* `1.2.0` - (`Future Development`) adding support for other product types products
