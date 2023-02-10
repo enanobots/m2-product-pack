@@ -3,7 +3,7 @@
     "description": "Magento 2 Product Pack",
     "homepage": "https://github.com/enanobots/m2-product-pack",
     "type": "magento2-module",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "license": "MIT",
     "authors": [
         {
