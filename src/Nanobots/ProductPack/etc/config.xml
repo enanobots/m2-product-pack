@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Q-Solutions Studio: eCommerce Nanobots. All rights reserved.
+ *
+ * @category    Nanobots
+ * @package     Nanobots_ProductPack
+ * @author      Jakub Winkler <jwinkler@qsolutionsstudio.com>
+ * @author      Wojtek Wnuk <wojtek@qsolutionsstudio.com>
+ * @author      Łukasz Owczarczuk <lukasz@qsolutionsstudio.com>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <product_pack>
+            <settings>
+                <option_display_type>price</option_display_type>
+            </settings>
+        </product_pack>
+    </default>
+</config>

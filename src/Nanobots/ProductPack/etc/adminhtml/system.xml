@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Q-Solutions Studio: eCommerce Nanobots. All rights reserved.
+ *
+ * @category    Nanobots
+ * @package     Nanobots_ProductPack
+ * @author      Jakub Winkler <jwinkler@qsolutionsstudio.com>
+ * @author      Wojtek Wnuk <wojtek@qsolutionsstudio.com>
+ * @author      Łukasz Owczarczuk <lukasz@qsolutionsstudio.com>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="product_pack" sortOrder="900" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+            <label>Product Packages</label>
+            <tab>catalog</tab>
+            <resource>Nanobots_ProductPack::config_Nanobots_ProductPack</resource>
+            <group id="settings" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+                <label>Settings</label>
+                <field id="option_display_type" type="select" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+                    <label>Option Display Type</label>
+                    <source_model>Nanobots\ProductPack\Model\Config\Source\OptionDisplayType</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

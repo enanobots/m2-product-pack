@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Q-Solutions Studio: eCommerce Nanobots. All rights reserved.
+ *
+ * @category    Nanobots
+ * @package     Nanobots_ProductPack
+ * @author      Jakub Winkler <jwinkler@qsolutionsstudio.com>
+ * @author      Wojtek Wnuk <wojtek@qsolutionsstudio.com>
+ * @author      Łukasz Owczarczuk <lukasz@qsolutionsstudio.com>
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="nanobots_productpack_packoption" resource="default" engine="innodb"
+           comment="nanobots_productpack_packoption Table">
+        <column xsi:type="int" name="packoption_id" unsigned="true" nullable="false" identity="true"
+                comment="Entity Id"/>
+        <column name="product_id" xsi:type="int" unsigned="true" nullable="false" comment="Product ID"/>
+        <column name="package_name" xsi:type="varchar" length="255" nullable="false" comment="Package Name"/>
+        <column name="discount_type" xsi:type="varchar" default="percent" length="10" nullable="false"
+                comment="Discount Type"/>
+        <column name="discount_value" xsi:type="decimal" default="0" unsigned="true" nullable="false"
+                comment="Discount Value"/>
+        <column name="pack_size" xsi:type="int" default="1" unsigned="true" nullable="false" comment="Pack Size"/>
+        <column name="extra_weight" xsi:type="decimal" default="0" unsigned="true" nullable="false"
+                comment="Extra Weight"/>
+        <column name="sort_order" xsi:type="int" unsigned="true" nullable="false" default="999" comment="Sort Order"/>
+        <column name="hash" xsi:type="varchar" length="255" nullable="false" onCreate="migrateDataFrom(packoption_id)"
+                comment="Unique Hash: product_id+_+type_id+_+pack_size"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="packoption_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="NANOBOTS_PRD_PCK_OPT_PRD_ID_CAT_PRD_ENTT_ENTT_ID"
+                    table="nanobots_productpack_packoption" column="product_id" referenceTable="catalog_product_entity"
+                    referenceColumn="entity_id" onDelete="CASCADE"/>
+    </table>
+
+</schema>

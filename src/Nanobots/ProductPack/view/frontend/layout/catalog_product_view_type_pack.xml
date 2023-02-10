@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Q-Solutions Studio: eCommerce Nanobots. All rights reserved.
+ *
+ * @category    Nanobots
+ * @package     Nanobots_ProductPack
+ * @author      Jakub Winkler <jwinkler@qsolutionsstudio.com>
+ * @author      Wojtek Wnuk <wojtek@qsolutionsstudio.com>
+ * @author      Łukasz Owczarczuk <lukasz@qsolutionsstudio.com>
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <attribute name="class" value="page-product-pack"/>
+        <referenceContainer name="product.info.type">
+            <block class="Nanobots\ProductPack\Block\Product\View\Type\Pack" name="product.info.pack" as="product_type_data"
+                   template="Magento_Catalog::product/view/type/default.phtml"/>
+        </referenceContainer>
+        <referenceBlock name="product.info.options.wrapper">
+            <block class="Magento\Framework\View\Element\Template" name="product.info.options.pack" as="options_pack"
+                   before="-" template="Nanobots_ProductPack::product/view/type/options/pack.phtml">
+                <arguments>
+                    <argument name="viewModel" xsi:type="object">Nanobots\ProductPack\ViewModel\Product\Pack</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

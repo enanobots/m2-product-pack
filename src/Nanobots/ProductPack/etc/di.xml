@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Q-Solutions Studio: eCommerce Nanobots. All rights reserved.
+ *
+ * @category    Nanobots
+ * @package     Nanobots_ProductPack
+ * @author      Jakub Winkler <jwinkler@qsolutionsstudio.com>
+ * @author      Wojtek Wnuk <wojtek@qsolutionsstudio.com>
+ * @author      Łukasz Owczarczuk <lukasz@qsolutionsstudio.com>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Nanobots\ProductPack\Api\PackOptionRepositoryInterface" type="Nanobots\ProductPack\Model\PackOptionRepository"/>
+    <preference for="Nanobots\ProductPack\Api\Data\PackOptionInterface" type="Nanobots\ProductPack\Model\PackOption"/>
+    <preference for="Nanobots\ProductPack\Api\Data\PackOptionSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+
+    <type name="Magento\Catalog\Api\ProductRepositoryInterface">
+        <plugin name="Nanobots_ProductPack::pack_options_as_extension_attribute" type="Nanobots\ProductPack\Plugin\PackOptions"/>
+    </type>
+    <type name="Magento\Catalog\Model\Product\TypeTransitionManager">
+        <plugin name="Nanobots_ProductPack::product_transition" type="Nanobots\ProductPack\Plugin\Product\TypeTransitionManager\Pack" sortOrder="999" />
+        <arguments>
+            <argument name="compatibleTypes" xsi:type="array">
+                <item name="pack" xsi:type="const">Nanobots\ProductPack\Model\Product\Type\Pack::TYPE_CODE</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="Nanobots_ProductPack::has_options" type="Nanobots\ProductPack\Plugin\Product\HasOptions"/>
+    </type>
+
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="Nanobots_ProductPack::get_data_from_custom_options" type="Nanobots\ProductPack\Plugin\Product\GetDataFromCustomOptions"/>
+    </type>
+
+    <type name="Magento\Sales\Api\OrderManagementInterface">
+        <plugin name="inventory_reservations_placement" disabled="true"/>
+        <plugin name="Nanobots_ProductPack::inventory_reservations_placement"
+                type="Nanobots\ProductPack\Plugin\Sales\OrderManagement\AppendReservationsAfterOrderPlacementPlugin"/>
+    </type>
+
+    <type name="Magento\InventoryShipping\Model\GetItemsToDeductFromShipment">
+        <plugin name="Nanobots_ProductPack::get_items_to_deduct_from_shipment"
+                type="Nanobots\ProductPack\Plugin\GetItemsToDeductFromShipment\Execute"/>
+    </type>
+
+    <type name="Magento\InventorySales\Model\GetItemsToCancelFromOrderItem">
+        <plugin name="Nanobots_ProductPack::get_items_to_cancel_from_order_item"
+                type="Nanobots\ProductPack\Plugin\GetItemsToCancelFromOrderItem\Execute"/>
+    </type>
+
+    <type name="Magento\Quote\Model\Quote">
+        <plugin name="Nanobots_ProductPack::check_pack_qty" type="Nanobots\ProductPack\Plugin\Quote\AddProduct"/>
+    </type>
+
+    <type name="Magento\CatalogInventory\Model\Quote\Item\QuantityValidator\Initializer\StockItem">
+        <plugin name="Nanobots_ProductPack::QuoteItemMaxQty" type="Nanobots\ProductPack\Plugin\Quote\QuoteItemMaxQty"/>
+    </type>
+</config>

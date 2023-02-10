@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Q-Solutions Studio: eCommerce Nanobots. All rights reserved.
+ *
+ * @category    Nanobots
+ * @package     Nanobots_ProductPack
+ * @author      Jakub Winkler <jwinkler@qsolutionsstudio.com>
+ * @author      Wojtek Wnuk <wojtek@qsolutionsstudio.com>
+ * @author      Łukasz Owczarczuk <lukasz@qsolutionsstudio.com>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Nanobots\ProductPack\Ui\DataProvider\Product\Form\Modifier\PackOptions">
+        <arguments>
+            <argument name="scopeName" xsi:type="string">product_form.product_form</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Pool" type="Magento\Ui\DataProvider\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="pack-options" xsi:type="array">
+                    <item name="class" xsi:type="string">Nanobots\ProductPack\Ui\DataProvider\Product\Form\Modifier\PackOptions</item>
+                    <item name="sortOrder" xsi:type="number">75</item>
+                </item>
+                <item name="product_attachments_pack" xsi:type="array">
+                    <item name="class" xsi:type="string">Nanobots\ProductPack\Ui\DataProvider\Product\Form\Modifier\Composite</item>
+                    <item name="sortOrder" xsi:type="number">200</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+</config>

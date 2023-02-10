@@ -1,0 +1,79 @@
+<?php
+/**
+ * Copyright © Q-Solutions Studio: eCommerce Nanobots. All rights reserved.
+ *
+ * @category    Nanobots
+ * @package     Nanobots_ProductPack
+ * @author      Jakub Winkler <jwinkler@qsolutionsstudio.com>
+ * @author      Wojtek Wnuk <wojtek@qsolutionsstudio.com>
+ * @author      Łukasz Owczarczuk <lukasz@qsolutionsstudio.com>
+ */
+
+use Magento\Framework\View\Element\Template;
+use Nanobots\ProductPack\Helper\Price as PriceHelper;
+use Nanobots\ProductPack\ViewModel\Product\Pack;
+
+/** @var Template $block */
+/** @var Pack $viewModel */
+
+$viewModel = $block->getData('viewModel');
+/** @var PriceHelper $helper */
+$helper = $this->helper(PriceHelper::class);
+?>
+<div class="fieldset">
+    <div class="pack-options-wrapper" id="pack-options-wrapper">
+        <h3 class="pack_options-header"><?= __('Select product quantity') ?></h3>
+        <div class="pack-options">
+            <div class="pack-option-single">
+                <input type="radio" name="pack_option_id" id="pack-option-0"
+                   value="0" data-title="<?= __('1 Unit') ?>"
+                   data-discount_type="percent" data-discount_value="0"
+                   data-length="0" data-hight="0"
+                   data-width="0" data-extra_weight="0" data-pack_size="1"
+                   checked="checked"
+                />
+                <label for="pack-option-0"><?= __('1 Unit') ?></label>
+            </div>
+            <?php foreach ($viewModel->getPackOptions() as $packOption):?>
+            <?php if ($viewModel->canShowOption($packOption)): ?>
+                <div class="pack-option-single">
+                    <input type="radio" name="pack_option_id"
+                           id="pack-option-<?= $packOption->getPackoptionId() ?>"
+                           <?= $viewModel->getDataAttributes($packOption) ?>
+                    />
+                    <label for="pack-option-<?= $packOption->getPackoptionId() ?>">
+                        <?= __(
+                            '%1 - %2',
+                            $packOption->getPackageName(),
+                            __('%1 Units', $packOption->getPackSize())
+                        ); ?>
+                        <?php if ($helper->getOptionDisplayType() === 'price'): ?>
+                            <?= __('Price per unit: %1', $viewModel->renderPricePerUnit($packOption)) ?>
+                        <?php else: ?>
+                            <?= __('Discount: %1', $viewModel->renderDiscount($packOption)) ?>
+                        <?php endif ?>
+                    </label>
+                </div>
+            <?php endif ?>
+            <?php endforeach ?>
+        </div>
+    </div>
+    <input type="hidden" name="pack_option[value]" value="0"/>
+    <input type="hidden" name="pack_option[title]" value="<?= __('1 Unit') ?>"/>
+    <input type="hidden" name="pack_option[discount_type]" value="percent"/>
+    <input type="hidden" name="pack_option[discount_value]" value="0"/>
+    <input type="hidden" name="pack_option[extra_weight]" value="0"/>
+    <input type="hidden" name="pack_option[pack_size]" value="1"/>
+    <input type="hidden" name="pack_option_hash" value=""/>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "#product_addtocart_form": {
+            "productpack": {
+                "packPrices": <?= $helper->getPriceConfigJson($viewModel->getProduct()) ?>,
+                "productId": "<?= $viewModel->getProduct()->getId(); ?>"
+            }
+        }
+    }
+</script>

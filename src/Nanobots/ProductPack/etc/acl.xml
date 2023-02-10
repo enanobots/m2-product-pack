@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Q-Solutions Studio: eCommerce Nanobots. All rights reserved.
+ *
+ * @category    Nanobots
+ * @package     Nanobots_ProductPack
+ * @author      Jakub Winkler <jwinkler@qsolutionsstudio.com>
+ * @author      Wojtek Wnuk <wojtek@qsolutionsstudio.com>
+ * @author      Łukasz Owczarczuk <lukasz@qsolutionsstudio.com>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+	<acl>
+		<resources>
+			<resource id="Magento_Backend::admin">
+				<resource id="Nanobots_ProductPack::PackOption" title="PackOption" sortOrder="10">
+					<resource id="Nanobots_ProductPack::PackOption_save" title="Save PackOption" sortOrder="10"/>
+					<resource id="Nanobots_ProductPack::PackOption_delete" title="Delete PackOption" sortOrder="20"/>
+					<resource id="Nanobots_ProductPack::PackOption_update" title="Update PackOption" sortOrder="30"/>
+					<resource id="Nanobots_ProductPack::PackOption_view" title="View PackOption" sortOrder="40"/>
+				</resource>
+			</resource>
+		</resources>
+	</acl>
+</config>
