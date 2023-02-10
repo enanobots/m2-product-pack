@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Block\Cart\Item\Renderer;
+namespace Nanobots\ProductPack\Block\Cart\Item\Renderer;
 
 use Magento\Checkout\Block\Cart\Item\Renderer;
 use Magento\Framework\DataObject\IdentityInterface;

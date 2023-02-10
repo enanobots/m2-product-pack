@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Helper\Catalog\Product;
+namespace Nanobots\ProductPack\Helper\Catalog\Product;
 
 use Magento\Catalog\Helper\Product\Configuration\ConfigurationInterface;
 use Magento\Catalog\Model\Product\Configuration\Item\ItemInterface;

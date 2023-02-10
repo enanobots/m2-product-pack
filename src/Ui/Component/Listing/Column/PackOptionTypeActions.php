@@ -11,9 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Ui\Component\Listing\Column;
-
-use function Nanobots\ProductPack\Ui\Component\Listing\Column\__;
+namespace Nanobots\ProductPack\Ui\Component\Listing\Column;
 
 class PackOptionTypeActions extends \Magento\Ui\Component\Listing\Columns\Column
 {

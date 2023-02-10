@@ -11,11 +11,11 @@
 
 declare(strict_types = 1);
 
-namespace Plugin\Product;
+namespace Nanobots\ProductPack\Plugin\Product;
 
 use Magento\Catalog\Model\Product;
 use Magento\Framework\Serialize\Serializer\Json;
-use Model\Product\Type\Pack;
+use Nanobots\ProductPack\Model\Product\Type\Pack;
 
 class GetDataFromCustomOptions
 {

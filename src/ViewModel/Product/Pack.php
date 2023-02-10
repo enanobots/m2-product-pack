@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace ViewModel\Product;
+namespace Nanobots\ProductPack\ViewModel\Product;
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Helper\Image;
@@ -27,11 +27,10 @@ use Magento\Framework\View\Element\Block\ArgumentInterface;
 use Magento\Quote\Model\ResourceModel\Quote\Item\Option\Collection;
 use Magento\Quote\Model\ResourceModel\Quote\Item\Option\CollectionFactory;
 use Magento\Store\Model\StoreManagerInterface;
-use Api\Data\PackOptionInterface;
-use Api\PackOptionRepositoryInterface;
-use Model\PackOption;
+use Nanobots\ProductPack\Api\Data\PackOptionInterface;
+use Nanobots\ProductPack\Api\PackOptionRepositoryInterface;
+use Nanobots\ProductPack\Model\PackOption;
 use Nanobots\ProductPack\Model\PackOptionFactory;
-use function Nanobots\ProductPack\ViewModel\Product\__;
 
 class Pack implements ArgumentInterface
 {

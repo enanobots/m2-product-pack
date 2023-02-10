@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Model\Product;
+namespace Nanobots\ProductPack\Model\Product;
 
 use Magento\Catalog\Api\Data\ProductTierPriceInterfaceFactory;
 use Magento\Catalog\Api\Data\ProductTierPriceExtensionFactory;

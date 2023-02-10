@@ -11,13 +11,13 @@
 
 declare(strict_types=1);
 
-namespace Model\ResourceModel;
+namespace Nanobots\ProductPack\Model\ResourceModel;
 
 use Exception;
 use Magento\Framework\Exception\AlreadyExistsException;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
-use Api\Data\PackOptionInterface;
+use Nanobots\ProductPack\Api\Data\PackOptionInterface;
 
 class PackOption extends AbstractDb
 {

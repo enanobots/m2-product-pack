@@ -11,9 +11,9 @@
 
 declare(strict_types=1);
 
-namespace Plugin\Product;
+namespace Nanobots\ProductPack\Plugin\Product;
 
-use Model\Product\Type\Pack;
+use Nanobots\ProductPack\Model\Product\Type\Pack;
 use Magento\Catalog\Model\Product;
 
 class HasOptions

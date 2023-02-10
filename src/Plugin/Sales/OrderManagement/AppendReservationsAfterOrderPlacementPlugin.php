@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Plugin\Sales\OrderManagement;
+namespace Nanobots\ProductPack\Plugin\Sales\OrderManagement;
 
 use Exception;
 use Magento\InventoryCatalogApi\Model\GetProductTypesBySkusInterface;
@@ -30,7 +30,7 @@ use Magento\InventorySalesApi\Api\Data\SalesEventExtensionFactory;
 use Magento\InventorySalesApi\Api\Data\SalesEventExtensionInterface;
 use Magento\InventorySales\Model\CheckItemsQuantity;
 use Magento\InventorySalesApi\Model\StockByWebsiteIdResolverInterface;
-use Model\Product\Type\Pack;
+use Nanobots\ProductPack\Model\Product\Type\Pack;
 
 class AppendReservationsAfterOrderPlacementPlugin
 {

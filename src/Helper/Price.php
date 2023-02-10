@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Helper;
+namespace Nanobots\ProductPack\Helper;
 
 use Magento\Catalog\Helper\Data as TaxHelper;
 use Magento\Catalog\Model\Product;

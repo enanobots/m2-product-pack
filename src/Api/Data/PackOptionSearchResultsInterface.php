@@ -11,20 +11,20 @@
 
 declare(strict_types=1);
 
-namespace Api\Data;
+namespace Nanobots\ProductPack\Api\Data;
 
 interface PackOptionSearchResultsInterface extends \Magento\Framework\Api\SearchResultsInterface
 {
 
     /**
      * Get PackOption list.
-     * @return \Api\Data\PackOptionInterface[]
+     * @return \Nanobots\ProductPack\Api\Data\PackOptionInterface[]
      */
     public function getItems();
 
     /**
      * Set product_id list.
-     * @param \Api\Data\PackOptionInterface[] $items
+     * @param \Nanobots\ProductPack\Api\Data\PackOptionInterface[] $items
      * @return $this
      */
     public function setItems(array $items);

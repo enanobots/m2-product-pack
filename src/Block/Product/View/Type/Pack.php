@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Block\Product\View\Type;
+namespace Nanobots\ProductPack\Block\Product\View\Type;
 
 use Magento\Catalog\Block\Product\View\AbstractView;
 

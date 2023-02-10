@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Ui\DataProvider\Product\Form\Modifier;
+namespace Nanobots\ProductPack\Ui\DataProvider\Product\Form\Modifier;
 
 use Magento\Catalog\Model\Locator\LocatorInterface;
 use Magento\Catalog\Model\Product\Type as CatalogType;
@@ -114,7 +114,7 @@ class Composite extends AbstractModifier
     {
         $productTypes = [
             CatalogType::TYPE_SIMPLE,
-            \Model\Product\Type\Pack::TYPE_CODE,
+            \Nanobots\ProductPack\Model\Product\Type\Pack::TYPE_CODE,
         ];
 
         return in_array((string) $this->locator->getProduct()->getTypeId(), $productTypes, true);

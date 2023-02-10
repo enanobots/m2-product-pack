@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Api\Data;
+namespace Nanobots\ProductPack\Api\Data;
 
 use Magento\Framework\Api\ExtensibleDataInterface;
 
@@ -25,7 +25,7 @@ interface PackOptionInterface extends ExtensibleDataInterface
     public const DISCOUNT_VALUE = 'discount_value';
     public const EXTRA_WEIGHT = 'extra_weight';
     public const PACK_SIZE = 'pack_size';
-    
+
     public const SORT_ORDER = 'sort_order';
     public const IS_DELETE = 'is_delete';
     public const HASH = 'hash';
