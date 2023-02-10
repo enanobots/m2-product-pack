@@ -9,7 +9,7 @@
  * @author      Łukasz Owczarczuk <lukasz@qsolutionsstudio.com>
  */
 
-namespace Nanobots\ProductPack\Ui\DataProvider\Product\Form\Modifier;
+namespace Ui\DataProvider\Product\Form\Modifier;
 
 use Magento\Catalog\Model\Locator\LocatorInterface;
 use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
@@ -22,7 +22,9 @@ use Magento\Ui\Component\Form\Element\Input;
 use Magento\Ui\Component\Form\Element\Select;
 use Magento\Ui\Component\Form\Field;
 use Magento\Ui\Component\Form\Fieldset;
-use Nanobots\ProductPack\Helper\Type;
+use Helper\Type;
+use function Nanobots\ProductPack\Ui\DataProvider\Product\Form\Modifier\__;
+
 class PackOptions extends AbstractModifier
 {
     public const GROUP_PACK_OPTIONS_NAME = 'pack_options';

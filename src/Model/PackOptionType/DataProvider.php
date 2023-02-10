@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Nanobots\ProductPack\Model\PackOptionType;
+namespace Model\PackOptionType;
 
 use Magento\Framework\App\Request\DataPersistorInterface;
 use Magento\Store\Model\StoreManagerInterface;

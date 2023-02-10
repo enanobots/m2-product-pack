@@ -11,9 +11,9 @@
 
 declare(strict_types=1);
 
-namespace Nanobots\ProductPack\Model;
+namespace Model;
 
-use Nanobots\ProductPack\Api\Data\PackOptionInterface;
+use Api\Data\PackOptionInterface;
 use Magento\Framework\Model\AbstractModel;
 
 class PackOption extends AbstractModel implements PackOptionInterface
@@ -25,7 +25,7 @@ class PackOption extends AbstractModel implements PackOptionInterface
      */
     public function _construct()
     {
-        $this->_init(ResourceModel\PackOption::class);
+        $this->_init(\Model\ResourceModel\PackOption::class);
     }
 
     /**

@@ -11,13 +11,13 @@
 
 declare(strict_types=1);
 
-namespace Nanobots\ProductPack\Plugin\GetItemsToDeductFromShipment;
+namespace Plugin\GetItemsToDeductFromShipment;
 
 use Magento\InventoryShipping\Model\GetItemsToDeductFromShipment;
 use Magento\InventorySourceDeductionApi\Model\ItemToDeductInterface;
 use Magento\InventorySourceDeductionApi\Model\ItemToDeductInterfaceFactory;
 use Magento\Sales\Model\Order\Shipment;
-use Nanobots\ProductPack\Model\Product\Type\Pack;
+use Model\Product\Type\Pack;
 
 class Execute
 {

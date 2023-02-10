@@ -11,12 +11,12 @@
 
 declare(strict_types=1);
 
-namespace Nanobots\ProductPack\Model\Product\Type;
+namespace Model\Product\Type;
 
 use Magento\Framework\DataObject;
-use Nanobots\ProductPack\Api\Data\PackOptionInterface;
-use Nanobots\ProductPack\Api\PackOptionRepositoryInterface;
-use Nanobots\ProductPack\Model\ResourceModel\PackOption as PackOptionResource;
+use Api\Data\PackOptionInterface;
+use Api\PackOptionRepositoryInterface;
+use Model\ResourceModel\PackOption as PackOptionResource;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Option;

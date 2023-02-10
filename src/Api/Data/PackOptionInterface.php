@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Nanobots\ProductPack\Api\Data;
+namespace Api\Data;
 
 use Magento\Framework\Api\ExtensibleDataInterface;
 

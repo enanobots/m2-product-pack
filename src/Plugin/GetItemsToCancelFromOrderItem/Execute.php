@@ -11,13 +11,13 @@
 
 declare(strict_types=1);
 
-namespace Nanobots\ProductPack\Plugin\GetItemsToCancelFromOrderItem;
+namespace Plugin\GetItemsToCancelFromOrderItem;
 
 use Magento\InventorySales\Model\GetItemsToCancelFromOrderItem;
 use Magento\InventorySalesApi\Api\Data\ItemToSellInterface;
 use Magento\InventorySalesApi\Api\Data\ItemToSellInterfaceFactory;
 use Magento\Sales\Model\Order\Item as OrderItem;
-use Nanobots\ProductPack\Model\Product\Type\Pack;
+use Model\Product\Type\Pack;
 
 class Execute
 {

@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Nanobots\ProductPack\Helper;
+namespace Helper;
 
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;

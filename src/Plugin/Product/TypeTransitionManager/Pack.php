@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Nanobots\ProductPack\Plugin\Product\TypeTransitionManager;
+namespace Plugin\Product\TypeTransitionManager;
 
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\TypeTransitionManager;
@@ -32,7 +32,7 @@ class Pack
     ) {
         $packOptions = $product->getPackOptions();
         if (!empty($packOptions)) {
-            $product->setTypeId(\Nanobots\ProductPack\Model\Product\Type\Pack::TYPE_CODE);
+            $product->setTypeId(\Model\Product\Type\Pack::TYPE_CODE);
             return;
         }
         $proceed($product);

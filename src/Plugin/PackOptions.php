@@ -12,15 +12,15 @@
 
 declare(strict_types=1);
 
-namespace Nanobots\ProductPack\Plugin;
+namespace Plugin;
 
 use Magento\Catalog\Api\Data\ProductExtensionFactory;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\ProductRepository;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Api\SearchResults;
-use Nanobots\ProductPack\Api\Data\PackOptionInterface;
-use Nanobots\ProductPack\Api\PackOptionRepositoryInterface;
+use Api\Data\PackOptionInterface;
+use Api\PackOptionRepositoryInterface;
 
 class PackOptions
 {

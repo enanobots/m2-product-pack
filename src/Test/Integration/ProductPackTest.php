@@ -7,9 +7,9 @@
  * @author      Wojciech M. Wnuk <wojtek@qsolutionsstudio.com>
  */
 
-namespace Nanobots\ProductPack\Test\Integration;
+namespace Test\Integration;
 
-use Nanobots\ProductPack\Model\Product\Type\Pack;
+use Model\Product\Type\Pack;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;

@@ -11,13 +11,13 @@
 
 declare(strict_types=1);
 
-namespace Nanobots\ProductPack\Observer\Product;
+namespace Observer\Product;
 
-use Nanobots\ProductPack\Api\Data\PackOptionInterface;
-use Nanobots\ProductPack\Api\PackOptionRepositoryInterface;
-use Nanobots\ProductPack\Model\PackOption;
+use Api\Data\PackOptionInterface;
+use Api\PackOptionRepositoryInterface;
+use Model\PackOption;
 use Nanobots\ProductPack\Model\PackOptionFactory;
-use Nanobots\ProductPack\Model\ResourceModel\PackOption as PackOptionResource;
+use Model\ResourceModel\PackOption as PackOptionResource;
 use Magento\Catalog\Model\Product;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Event\Observer;

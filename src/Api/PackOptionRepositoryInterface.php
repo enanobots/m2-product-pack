@@ -11,25 +11,25 @@
 
 declare(strict_types=1);
 
-namespace Nanobots\ProductPack\Api;
+namespace Api;
 
 interface PackOptionRepositoryInterface
 {
 
     /**
      * Save PackOption
-     * @param \Nanobots\ProductPack\Api\Data\PackOptionInterface $packOption
-     * @return \Nanobots\ProductPack\Api\Data\PackOptionInterface
+     * @param \Api\Data\PackOptionInterface $packOption
+     * @return \Api\Data\PackOptionInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function save(
-        \Nanobots\ProductPack\Api\Data\PackOptionInterface $packOption
+        \Api\Data\PackOptionInterface $packOption
     );
 
     /**
      * Retrieve PackOption
      * @param string $packoptionId
-     * @return \Nanobots\ProductPack\Api\Data\PackOptionInterface
+     * @return \Api\Data\PackOptionInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function get($packOptionId);
@@ -37,7 +37,7 @@ interface PackOptionRepositoryInterface
     /**
      * Retrieve PackOption matching the specified criteria.
      * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
-     * @return \Nanobots\ProductPack\Api\Data\PackOptionSearchResultsInterface
+     * @return \Api\Data\PackOptionSearchResultsInterface
      */
     public function getList(
         \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
@@ -45,12 +45,12 @@ interface PackOptionRepositoryInterface
 
     /**
      * Delete PackOption
-     * @param \Nanobots\ProductPack\Api\Data\PackOptionInterface $packOption
+     * @param \Api\Data\PackOptionInterface $packOption
      * @return bool true on success
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function delete(
-        \Nanobots\ProductPack\Api\Data\PackOptionInterface $packOption
+        \Api\Data\PackOptionInterface $packOption
     );
 
     /**

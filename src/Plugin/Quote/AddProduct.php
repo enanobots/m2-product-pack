@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Nanobots\ProductPack\Plugin\Quote;
+namespace Plugin\Quote;
 
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Type\AbstractType;
@@ -25,7 +25,8 @@ use Magento\InventorySalesApi\Api\Data\SalesChannelInterface;
 use Magento\InventorySalesApi\Api\StockResolverInterface;
 use Magento\Quote\Model\Quote;
 use Magento\Store\Model\StoreManager;
-use Nanobots\ProductPack\Model\Product\Type\Pack;
+use Model\Product\Type\Pack;
+use function Nanobots\ProductPack\Plugin\Quote\__;
 
 class AddProduct
 {

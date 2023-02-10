@@ -11,10 +11,10 @@
 
 declare(strict_types = 1);
 
-namespace Nanobots\ProductPack\Model\ResourceModel\PackOption;
+namespace Model\ResourceModel\PackOption;
 
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
-use Nanobots\ProductPack\Model\ResourceModel\PackOption;
+use Model\ResourceModel\PackOption;
 
 class Collection extends AbstractCollection
 {
@@ -26,7 +26,7 @@ class Collection extends AbstractCollection
     protected function _construct()
     {
         $this->_init(
-            \Nanobots\ProductPack\Model\PackOption::class,
+            \Model\PackOption::class,
             PackOption::class
         );
     }

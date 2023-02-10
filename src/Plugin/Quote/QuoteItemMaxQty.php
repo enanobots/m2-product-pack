@@ -11,12 +11,12 @@
 
 declare(strict_types = 1);
 
-namespace Nanobots\ProductPack\Plugin\Quote;
+namespace Plugin\Quote;
 
 use Magento\CatalogInventory\Api\Data\StockItemInterface;
 use Magento\CatalogInventory\Model\Quote\Item\QuantityValidator\Initializer\StockItem as Subject;
 use Magento\Quote\Model\Quote\Item;
-use Nanobots\ProductPack\Model\Product\Type\Pack;
+use Model\Product\Type\Pack;
 
 class QuoteItemMaxQty
 {

@@ -11,9 +11,10 @@
 
 declare(strict_types=1);
 
-namespace Nanobots\ProductPack\Model\Config\Source;
+namespace Model\Config\Source;
 
 use Magento\Framework\Data\OptionSourceInterface;
+use function Nanobots\ProductPack\Model\Config\Source\__;
 
 class OptionDisplayType implements OptionSourceInterface
 {

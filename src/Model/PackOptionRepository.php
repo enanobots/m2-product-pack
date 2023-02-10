@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Nanobots\ProductPack\Model;
+namespace Model;
 
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\Api\ExtensibleDataObjectConverter;
@@ -22,12 +22,14 @@ use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Reflection\DataObjectProcessor;
-use Nanobots\ProductPack\Api\Data\PackOptionInterface;
+use Api\Data\PackOptionInterface;
 use Nanobots\ProductPack\Api\Data\PackOptionInterfaceFactory;
 use Nanobots\ProductPack\Api\Data\PackOptionSearchResultsInterfaceFactory;
-use Nanobots\ProductPack\Api\PackOptionRepositoryInterface;
-use Nanobots\ProductPack\Model\ResourceModel\PackOption as ResourcePackOption;
+use Api\PackOptionRepositoryInterface;
+use Model\ResourceModel\PackOption as ResourcePackOption;
+use Nanobots\ProductPack\Model\PackOptionFactory;
 use Nanobots\ProductPack\Model\ResourceModel\PackOption\CollectionFactory as PackOptionCollectionFactory;
+use function Nanobots\ProductPack\Model\__;
 
 class PackOptionRepository implements PackOptionRepositoryInterface
 {
