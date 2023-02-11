@@ -1,0 +1,112 @@
+<?php
+/**
+ * Original Created by Q-Solutions Studio
+ * Hyva Compatibility by ProxiBlue
+ *
+ * @category    Nanobots
+ * @package     Nanobots_ProductPack
+ * @author      Wojciech M. Wnuk <wojtek@qsolutionsstudio.com>
+ * @author      Lucas van Staden <lucas@proxiblue.com.au>
+ */
+
+use Nanobots\ProductPack\Helper\Price as PriceHelper;
+use Nanobots\ProductPack\ViewModel\Product\Pack;
+use Magento\Framework\View\Element\Template;
+
+?>
+<?php
+/** @var Template $block */
+/** @var Pack $viewModel */
+
+$viewModel = $block->getData('viewModel');
+/** @var PriceHelper $helper */
+$helper = $this->helper(PriceHelper::class);
+?>
+
+<script>
+    function initProductPackOptions() {
+        return {
+            packOptionPrices: <?= $helper->getPriceConfigJson($viewModel->getProduct()) ?>,
+            packOptionSelected: 0,
+            product_id: <?= $viewModel->getProduct()->getId(); ?>,
+            value: '0',
+            package_name: '<?= __('1 Unit') ?>',
+            discount_type: 'fixed',
+            discount_value: '0',
+            length: '0',
+            height: '1',
+            pack_option_hash: '',
+            extra_weight: '0',
+            pack_size: '1',
+            packOptions: {},
+            packSelected() {
+                let checkedOption = document.getElementById('pack-option-' + this.packOptionSelected),
+                    dataSet = checkedOption.dataset;
+                for (let key in dataSet) {
+                    if (dataSet.hasOwnProperty(key) && this.hasOwnProperty(key)) {
+                        this.packOptions[key] = dataSet[key];
+                        this[key] = dataSet[key];
+                    }
+                }
+                this.packOptions.title = this.package_name;
+                this.packOptions.value = this.packOptionSelected;
+                this.pack_option_hash = btoa(JSON.stringify(this.packOptions));
+                let data = this.packOptionPrices[this.packOptionSelected];
+                if (data.hasOwnProperty('price')) {
+                    let mainPriceElm = document.querySelector('.final-price #product-price-' + this.product_id + ' .price');
+                    if (mainPriceElm) {
+                        mainPriceElm.textContent = data.price;
+                    }
+                }
+                if (data.hasOwnProperty('base_price')) {
+                    let priceElm = document.querySelector('#price-including-tax-product-price-' + this.product_id + ' > .price');
+                    if (priceElm) {
+                        priceElm.textContent = data.base_price;
+                    }
+
+                }
+            }
+        };
+
+    }
+</script>
+<div class="fieldset" x-data="initProductPackOptions()">
+    <div class="pack-options-wrapper">
+        <h3 class="pack_options-header"><?= __('Select product quantity') ?></h3>
+        <div class="pack-options">
+            <div class="pack-option-single">
+                <input type="radio" name="pack_option_id" id="pack-option-0" value="0" data-title="<?= __('1 Unit') ?>"
+                       data-discount_type="fixed" data-discount_value="0" data-extra_weight="0" data-pack_size="1"
+                       checked="checked" @change="packSelected()" x-model="packOptionSelected" class="inline-block"
+                />
+                <label for="pack-option-0" class="inline-block"><?= __('1 Unit') ?></label>
+            </div>
+            <?php foreach ($viewModel->getPackOptions() as $packOption): ?>
+                <?php if ($viewModel->canShowOption($packOption)): ?>
+                    <div class="pack-option-single">
+                        <input type="radio" name="pack_option_id" class="inline-block"
+                               id="pack-option-<?= $packOption->getPackoptionId() ?>"
+                            <?= $viewModel->getDataAttributes($packOption) ?> @change="packSelected()"
+                               x-model="packOptionSelected"
+                        />
+                        <label for="pack-option-<?= $packOption->getPackoptionId() ?>" class="inline-block">
+                            <?= __($packOption->getTitle()) ?> - <?= __('%1 Units', $packOption->getPackSize()) ?>,
+                            <?php if ($helper->getOptionDisplayType() === 'price'): ?>
+                                <?= __('Price per unit: %1', $viewModel->renderPricePerUnit($packOption)) ?>
+                            <?php else: ?>
+                                <?= __('Discount: %1', $viewModel->renderDiscount($packOption)) ?>
+                            <?php endif ?>
+                        </label>
+                    </div>
+                <?php endif ?>
+            <?php endforeach ?>
+        </div>
+    </div>
+    <input type="hidden" name="pack_option[value]" x-model="packOptionSelected"/>
+    <input type="hidden" name="pack_option[title]" x-model="package_name"/>
+    <input type="hidden" name="pack_option[discount_type]" x-model="discount_type"/>
+    <input type="hidden" name="pack_option[discount_value]" x-model="discount_value"/>
+    <input type="hidden" name="pack_option[extra_weight]" x-model="extra_weight"/>
+    <input type="hidden" name="pack_option[pack_size]" x-model="pack_size"/>
+    <input type="hidden" name="pack_option_hash" x-model="pack_option_hash"/>
+</div>
