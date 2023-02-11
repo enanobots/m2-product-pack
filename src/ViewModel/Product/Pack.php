@@ -17,6 +17,7 @@ use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Helper\Image;
 use Magento\Catalog\Model\Product;
 use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Request\Http as Request;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Locale\Resolver;
@@ -26,6 +27,7 @@ use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
 use Magento\Quote\Model\ResourceModel\Quote\Item\Option\Collection;
 use Magento\Quote\Model\ResourceModel\Quote\Item\Option\CollectionFactory;
+use Magento\Store\Model\ScopeInterface as StoreScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Nanobots\ProductPack\Api\Data\PackOptionInterface;
 use Nanobots\ProductPack\Api\PackOptionRepositoryInterface;
@@ -67,6 +69,9 @@ class Pack implements ArgumentInterface
     /** @var Resolver */
     protected Resolver $localeResolver;
 
+    /** @var ScopeConfigInterface  */
+    protected ScopeConfigInterface $scopeConfig;
+
     /**
      * @param CollectionFactory $itemOptionCollectionFactory
      * @param Request $request
@@ -81,6 +86,7 @@ class Pack implements ArgumentInterface
      * @param Resolver $localeResolver
      */
     public function __construct(
+        ScopeConfigInterface $scopeConfig,
         CollectionFactory $itemOptionCollectionFactory,
         Request $request,
         PackOptionRepositoryInterface $packOptionRepository,
@@ -93,6 +99,7 @@ class Pack implements ArgumentInterface
         Image $image,
         Resolver $localeResolver
     ) {
+        $this->scopeConfig = $scopeConfig;
         $this->itemOptionCollectionFactory = $itemOptionCollectionFactory;
         $this->request = $request;
         $this->packOptionRepository = $packOptionRepository;
@@ -244,36 +251,25 @@ class Pack implements ArgumentInterface
             }
             return (1 - ($packOption->getDiscountValue() / 100)) * $price;
         } else {
-            return $specialPrice;
+            switch ($this->scopeConfig->getValue(
+                \Nanobots\ProductPack\Model\Product\Price::XPATH_PRODUCT_PACK_CONFIG_SPECIAL_PRICE,
+                StoreScopeInterface::SCOPE_STORE
+            )) {
+                case \Nanobots\ProductPack\Model\Config\Source\SpecialPriceCalculationType::USE_MIN_PRICE: {
+                    return (float)min(
+                        (1 - ($packOption->getDiscountValue() / 100)) * $product->getPrice(),
+                        (float)$specialPrice
+                    );
+                    break;
+                }
+                case \Nanobots\ProductPack\Model\Config\Source\SpecialPriceCalculationType::USE_SPECIAL_PRICE:
+                default: {
+                    return (float)$product->getSpecialPrice();
+                }
+            }
         }
     }
 
-    /**
-     * Get Default Pack Image
-     *
-     * @return string
-     */
-    public function getDefaultImage(): string
-    {
-        $product = $this->getProduct();
-        return $this->image->init($product, 'product_thumbnail')->setImageFile($product->getImage())->getUrl();
-    }
-
-    /**
-     * Get Thumbnail URL
-     *
-     * @param string|null $image
-     * @return string
-     * @throws NoSuchEntityException
-     */
-    public function getImageUrl(?string $image): string
-    {
-        if ($image) {
-            $mediaUrl = $this->storeManager->getStore()->getBaseUrl(UrlInterface::URL_TYPE_MEDIA);
-            return $mediaUrl . 'pack_options/' . $image;
-        }
-        return '';
-    }
 
     /**
      * Get Current Product From Registry

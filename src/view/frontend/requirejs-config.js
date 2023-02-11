@@ -14,7 +14,7 @@ let config = {
         }
     },
     shim: {
-        'productPackage': {
+        productpack: {
             deps: ['jquery']
         }
     }

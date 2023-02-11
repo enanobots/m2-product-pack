@@ -76,7 +76,7 @@ class AddProduct
         $processMode = AbstractType::PROCESS_MODE_FULL
     ) {
         if ($product->getTypeId() === Pack::TYPE_CODE && $salableQty = $this->getSalableQty($product)) {
-            $packSize = $this->getPackSize($request) ?? 1;
+            $packSize = $this->getPackSize($request);
             if ($packSize > 1) {
                 $qty = $request->getData('qty') ?? 1;
                 if (!$this->canAddPackToCart($subject, $product, $packSize, $qty, $salableQty)) {

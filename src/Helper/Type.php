@@ -32,25 +32,4 @@ class Type extends AbstractHelper
         parent::__construct($context);
         $this->storeManager = $storeManager;
     }
-
-    /**
-     * @param $image
-     * @return string
-     */
-    public function getImageUrl($image): string
-    {
-        return $this->_getUrl($image);
-    }
-
-    /**
-     * @return int
-     */
-    protected function getStoreId(): int
-    {
-        try {
-            return $this->storeManager->getStore()->getId();
-        } catch (NoSuchEntityException $e) {
-            return 0;
-        }
-    }
 }

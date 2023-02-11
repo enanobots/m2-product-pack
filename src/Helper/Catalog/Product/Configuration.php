@@ -40,9 +40,8 @@ class Configuration implements ConfigurationInterface
     {
         $buyRequest = $item->getOptionByCode('info_buyRequest');
         $packOption = json_decode($buyRequest->getValue(), true);
-        $unitAttribute = $item->getProduct()->getResource()->getAttribute('unit');
 
-        if ($packOption = $buyRequest['pack_option'] ?? null) {
+        if ($packOption['pack_option'] ?? []) {
             return array_merge(
                 [
                     [
@@ -56,8 +55,8 @@ class Configuration implements ConfigurationInterface
                 ],
                 $this->productConfiguration->getCustomOptions($item)
             );
+        } else {
+            return [];
         }
-
-        return [];
     }
 }

@@ -16,6 +16,7 @@
         <product_pack>
             <settings>
                 <option_display_type>price</option_display_type>
+                <special_price_calc>min</special_price_calc>
             </settings>
         </product_pack>
     </default>

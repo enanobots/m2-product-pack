@@ -88,7 +88,7 @@ class Price extends AbstractHelper
      * @param $price
      * @param $discountType
      * @param $discountValue
-     * @param $specialPrice
+     * @param float|null $specialPrice
      * @return array
      */
     public function calculatePrices($basePrice, $price, $discountType, $discountValue, ?float $specialPrice = 0.00): array

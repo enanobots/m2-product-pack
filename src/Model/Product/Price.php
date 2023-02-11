@@ -30,6 +30,7 @@ use Magento\Store\Model\StoreManagerInterface;
 
 class Price extends PriceModel
 {
+    const XPATH_PRODUCT_PACK_CONFIG_SPECIAL_PRICE = 'product_pack/settings/special_price_calc';
     /**
      * @var Json|mixed
      */
@@ -123,7 +124,18 @@ class Price extends PriceModel
             $packOption = $buyRequest['pack_option'] ?? null;
             if ($packOption) {
                 if ($product->getSpecialPrice()) {
-                    $finalPrice = round($product->getSpecialPrice(), 2) * $packOption['pack_size'];
+                    switch ($this->config->getValue(self::XPATH_PRODUCT_PACK_CONFIG_SPECIAL_PRICE)) {
+                        case \Nanobots\ProductPack\Model\Config\Source\SpecialPriceCalculationType::USE_MIN_PRICE: {
+                            $finalPrice = min($this->getPrice($product), (float)$product->getSpecialPrice());
+                            break;
+                        }
+                        case \Nanobots\ProductPack\Model\Config\Source\SpecialPriceCalculationType::USE_SPECIAL_PRICE:
+                        default: {
+                            $finalPrice = (float)$product->getSpecialPrice();
+                            break;
+                        }
+                    }
+                    $finalPrice *= $packOption['pack_size'];
                 } else {
                     $finalPrice *= $packOption['pack_size'];
                 }
