@@ -5,6 +5,10 @@
 ![](https://img.shields.io/badge/version-BETA-yellowgreen?style=for-the-badge)
 
 # Product Collective Packages Module for Magento 2 / Adobe Commerce
+
+### HYVA Compatible - yes
+
+[![hyva-logo-360.png](https://i.postimg.cc/8PRgt2z7/hyva-logo-360.png)](https://postimg.cc/ZC5QqD3m)
 #### (BETA version)
 
 [![Screenshot-at-22-00-40.png](https://i.postimg.cc/HWtnvbMT/Screenshot-at-22-00-40.png)](https://postimg.cc/t7Y9YZDc)
@@ -51,3 +55,4 @@ php bin/magento setup:upgrade
 * `1.0.0` - Initial release of this module
 * `1.1.0` - (`In Development`) adding support for GraphQL and REST API
 * `1.2.0` - (`Future Development`) adding support for other product types products
+
