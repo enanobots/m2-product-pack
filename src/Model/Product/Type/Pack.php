@@ -153,4 +153,13 @@ class Pack extends Simple
 
         return [$product];
     }
+
+    /**
+     * @param $product
+     * @return true
+     */
+    public function isPossibleBuyFromList($product)
+    {
+        return true;
+    }
 }

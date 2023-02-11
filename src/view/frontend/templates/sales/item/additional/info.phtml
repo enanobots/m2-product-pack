@@ -32,24 +32,24 @@ $item = $block->getParentBlock()->getData('item');
                 if ($itemOption->getCode() === "info_buyRequest") {
                     $buyRequest = json_decode($itemOption->getValue(), true);
                     if ($buyRequest) {
-                        $packOption = $buyRequest['pack_option'];
+                        $packOption = $buyRequest['pack_option'] ?? null;
                     }
                 }
             }
         }
-
+        
         $title = $packOption['title'] ?? '';
         $qty = $packOption['pack_size'] ?? '';
     ?>
     <?php if ((int)$qty > 1): ?>
-    <div class="pack-options-container">
-        <div class="pack-option-title">
-            <span><?= __('Package') ?>:&nbsp;<strong><?= __($title) ?></strong></span>
+        <div class="pack-options-container">
+            <div class="pack-option-title">
+                <span><?= __('Package') ?>:&nbsp;<strong><?= __($title) ?></strong></span>
+            </div>
+            <div class="pack-option-qty">
+                <span><?= __('Units') ?>:&nbsp;</span><strong><?= $qty
+                    ?></strong>
+            </div>
         </div>
-        <div class="pack-option-qty">
-            <span><?= __('Units') ?>:&nbsp;</span><strong><?= $qty
-                ?></strong>
-        </div>
-    </div>
     <?php endif ?>
 <?php endif; ?>
