@@ -13,7 +13,7 @@
 
 [![Screenshot-at-22-00-40.png](https://i.postimg.cc/HWtnvbMT/Screenshot-at-22-00-40.png)](https://postimg.cc/t7Y9YZDc)
 
-This module enhances the functionality of Adobe Commerce by providing a new feature for product collective
+This module enhances the functionality of Magento 2 by providing a new feature for product collective
 packages. With this module, merchants will be able to easily create and manage packages made up of multiple 
 quantities of the same products. 
 Each package can include different number of product units and the prices will be automatically calculated based on the product count.
@@ -26,10 +26,11 @@ Merchants can specify 2 types of dicounts
 
 This module only works for simple products.
 
-Create and manage packages made up of multiple products
-Automatically calculate package prices based on the combined price of the included products
-Ability to include products with different variations in a single package
-Easy-to-use interface for creating and managing packages
+- Create and manage packages made up of multiple products
+- Automatically calculate package prices based on the combined price of the included products
+- Ability to include products with different variations in a single package
+- Easy-to-use interface for creating and managing packages
+
 This module is a must-have for merchants looking to simplify their product offerings and increase sales. Give it a try today! 
 
 ### Installation
