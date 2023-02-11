@@ -26,10 +26,11 @@ Merchants can specify 2 types of dicounts
 
 This module only works for simple products.
 
-Create and manage packages made up of multiple products
-Automatically calculate package prices based on the combined price of the included products
-Ability to include products with different variations in a single package
-Easy-to-use interface for creating and managing packages
+- Create and manage packages made up of multiple products
+- Automatically calculate package prices based on the combined price of the included products
+- Ability to include products with different variations in a single package
+- Easy-to-use interface for creating and managing packages
+
 This module is a must-have for merchants looking to simplify their product offerings and increase sales. Give it a try today! 
 
 ### Installation
