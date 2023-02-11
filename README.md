@@ -13,7 +13,7 @@
 
 [![Screenshot-at-22-00-40.png](https://i.postimg.cc/HWtnvbMT/Screenshot-at-22-00-40.png)](https://postimg.cc/t7Y9YZDc)
 
-This module enhances the functionality of Adobe Commerce by providing a new feature for product collective
+This module enhances the functionality of Magento 2 by providing a new feature for product collective
 packages. With this module, merchants will be able to easily create and manage packages made up of multiple 
 quantities of the same products. 
 Each package can include different number of product units and the prices will be automatically calculated based on the product count.
