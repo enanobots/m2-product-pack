@@ -35,26 +35,26 @@ $helper = $this->helper(PriceHelper::class);
                 <label for="pack-option-0"><?= __('1 Unit') ?></label>
             </div>
             <?php foreach ($viewModel->getPackOptions() as $packOption):?>
-            <?php if ($viewModel->canShowOption($packOption)): ?>
-                <div class="pack-option-single">
-                    <input type="radio" name="pack_option_id"
-                           id="pack-option-<?= $packOption->getPackoptionId() ?>"
-                           <?= $viewModel->getDataAttributes($packOption) ?>
-                    />
-                    <label for="pack-option-<?= $packOption->getPackoptionId() ?>">
-                        <?= __(
-                            '%1 - %2',
-                            $packOption->getPackageName(),
-                            __('%1 Units', $packOption->getPackSize())
-                        ); ?>
-                        <?php if ($helper->getOptionDisplayType() === 'price'): ?>
-                            <?= __('Price per unit: %1', $viewModel->renderPricePerUnit($packOption)) ?>
-                        <?php else: ?>
-                            <?= __('Discount: %1', $viewModel->renderDiscount($packOption)) ?>
-                        <?php endif ?>
-                    </label>
-                </div>
-            <?php endif ?>
+                <?php if ($viewModel->canShowOption($packOption)): ?>
+                    <div class="pack-option-single">
+                        <input type="radio" name="pack_option_id"
+                               id="pack-option-<?= $packOption->getPackoptionId() ?>"
+                               <?= $viewModel->getDataAttributes($packOption) ?>
+                        />
+                        <label for="pack-option-<?= $packOption->getPackoptionId() ?>">
+                            <?= __(
+                                '%1 - %2',
+                                $packOption->getPackageName(),
+                                __('%1 Units', $packOption->getPackSize())
+                            ); ?>
+                            <?php if ($helper->getOptionDisplayType() === 'price'): ?>
+                                <?= __('Price per unit: %1', $viewModel->renderPricePerUnit($packOption)) ?>
+                            <?php else: ?>
+                                <?= __('Discount: %1', $viewModel->renderDiscount($packOption)) ?>
+                            <?php endif ?>
+                        </label>
+                    </div>
+                <?php endif ?>
             <?php endforeach ?>
         </div>
     </div>

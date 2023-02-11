@@ -42,18 +42,22 @@ class Configuration implements ConfigurationInterface
         $packOption = json_decode($buyRequest->getValue(), true);
         $unitAttribute = $item->getProduct()->getResource()->getAttribute('unit');
 
-        return array_merge(
-            [
+        if ($packOption = $buyRequest['pack_option'] ?? null) {
+            return array_merge(
                 [
-                    'label' => __('Package'),
-                    'value' => $packOption['pack_option']['title']
+                    [
+                        'label' => __('Package'),
+                        'value' => $packOption['pack_option']['title']
+                    ],
+                    [
+                        'label' => __('Units'),
+                        'value' => $packOption['pack_option']['pack_size']
+                    ]
                 ],
-                [
-                    'label' => __('Units'),
-                    'value' => $packOption['pack_option']['pack_size']
-                ]
-            ],
-            $this->productConfiguration->getCustomOptions($item)
-        );
+                $this->productConfiguration->getCustomOptions($item)
+            );
+        }
+
+        return [];
     }
 }
