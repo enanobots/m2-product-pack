@@ -37,9 +37,6 @@
         <constraint xsi:type="unique" referenceId="NANOBOTS_PRD_PCK_UNIQUE_INSERT_UPDATE">
             <column name="product_id"/>
             <column name="package_name"/>
-            <column name="discount_value"/>
-            <column name="pack_size"/>
-            <column name="extra_weight"/>
         </constraint>    
     </table>
 
