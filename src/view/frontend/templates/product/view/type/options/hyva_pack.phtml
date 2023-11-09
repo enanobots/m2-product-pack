@@ -52,11 +52,19 @@ $helper = $this->helper(PriceHelper::class);
                 this.packOptions.value = this.packOptionSelected;
                 this.pack_option_hash = btoa(JSON.stringify(this.packOptions));
                 let data = this.packOptionPrices[this.packOptionSelected];
-                if (data.hasOwnProperty('price')) {
-                    let mainPriceElm = document.querySelector('.final-price #product-price-' + this.product_id + ' .price');
-                    if (mainPriceElm) {
+                let mainPriceElm = document.querySelector('.final-price #product-price-' + this.product_id + ' .price');
+                if (mainPriceElm) {
+                    <?php  if ($helper->displayCalculatedPrice()): ?>
+                    if (data.hasOwnProperty('qty_price')) {
+                        mainPriceElm.textContent = data.qty_price;
+                    } else if (data.hasOwnProperty('price')) {
                         mainPriceElm.textContent = data.price;
                     }
+                    <?php else : ?>
+                    if (data.hasOwnProperty('price')) {
+                        mainPriceElm.textContent = data.price;
+                    }
+                    <?php endif ?>
                 }
                 if (data.hasOwnProperty('base_price')) {
                     let priceElm = document.querySelector('#price-including-tax-product-price-' + this.product_id + ' > .price');

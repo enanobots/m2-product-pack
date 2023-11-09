@@ -72,7 +72,8 @@ $helper = $this->helper(PriceHelper::class);
         "#product_addtocart_form": {
             "productpack": {
                 "packPrices": <?= $helper->getPriceConfigJson($viewModel->getProduct()) ?>,
-                "productId": "<?= $viewModel->getProduct()->getId(); ?>"
+                "productId": "<?= $viewModel->getProduct()->getId(); ?>",
+                "display_calculated_price": <?= $helper->displayCalculatedPrice(true) ?>
             }
         }
     }

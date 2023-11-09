@@ -28,6 +28,11 @@
                     <source_model>Nanobots\ProductPack\Model\Config\Source\SpecialPriceCalculationType</source_model>
                     <comment><![CDATA[What price should be used for single unit in a pack if special price is enabled]]></comment>
                 </field>
+
+                <field id="pdp_display_calculated_price" type="select" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+                    <label>Display full price in Product View (price * pack qty)</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
             </group>
         </section>
     </system>
