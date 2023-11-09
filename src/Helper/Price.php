@@ -29,6 +29,12 @@ class Price extends AbstractHelper
     /** @var string  */
     public const OPTION_DISPLAY_TYPE_XPATH = 'product_pack/settings/option_display_type';
 
+    /**
+     * @var string
+     */
+    public const XPATH_PRODUCT_PDP_CONFIG_CALCULATED_PRICE = 'product_pack/settings/pdp_display_calculated_price';
+
+
     /** @var PriceCurrencyInterface  */
     protected PriceCurrencyInterface $priceCurrency;
 
@@ -91,7 +97,7 @@ class Price extends AbstractHelper
      * @param float|null $specialPrice
      * @return array
      */
-    public function calculatePrices($basePrice, $price, $discountType, $discountValue, ?float $specialPrice = 0.00): array
+    public function calculatePrices($basePrice, $price, $discountType, $discountValue, ?float $specialPrice = 0.00, $packQty = 0): array
     {
         if ($specialPrice) {
             return [
@@ -117,10 +123,11 @@ class Price extends AbstractHelper
         }
 
         $basePrice = $price * $x;
-
+        $qtyPrice = $price * $packQty;
         return [
             'price' => $this->priceCurrency->format($basePrice, false),
-            'base_price' => $this->priceCurrency->format($price, false)
+            'base_price' => $this->priceCurrency->format($price, false),
+            'qty_price' => $this->priceCurrency->format($qtyPrice, false)
         ];
     }
 
@@ -171,7 +178,8 @@ class Price extends AbstractHelper
                     $price,
                     $packOption['discount_type'],
                     $packOption['discount_value'],
-                    (float)$specialPrice
+                    (float)$specialPrice,
+                    $packOption['pack_size']
                 );
             }
 
@@ -179,5 +187,22 @@ class Price extends AbstractHelper
         }
 
         return $this->priceConfig;
+    }
+
+    /**
+     * Return config value to display Price * pack qty in PDP page
+     *
+     * @return bool|string
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     */
+    public function displayCalculatedPrice($asJson = false): mixed
+    {
+        $result = (bool) $this->scopeConfig->getValue(
+            self::XPATH_PRODUCT_PDP_CONFIG_CALCULATED_PRICE,
+            ScopeInterface::SCOPE_STORES,
+            $this->storeManager->getStore()->getId()
+        );
+
+        return ($asJson) ? $this->jsonSerializer->serialize($result) : $result;
     }
 }
