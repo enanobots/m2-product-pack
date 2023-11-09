@@ -70,7 +70,6 @@ define([
                 $('input[name="pack_option_hash"]').val(btoa(JSON.stringify(packOptionHashData)));
 
                 let data = this.options.packPrices[checkedOptionVal];
-                debugger;
                 if (data.hasOwnProperty('price')) {
                     var priceDisplay = data.price;
                     if( this.options.display_calculated_price ) {
