@@ -31,6 +31,7 @@ use Magento\Store\Model\StoreManagerInterface;
 class Price extends PriceModel
 {
     const XPATH_PRODUCT_PACK_CONFIG_SPECIAL_PRICE = 'product_pack/settings/special_price_calc';
+
     /**
      * @var Json|mixed
      */

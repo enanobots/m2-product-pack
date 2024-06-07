@@ -23,7 +23,8 @@ define([
     $.widget('nanobots.productpack', {
         options: {
             packPrices: {},
-            productId: null
+            productId: null,
+            display_calculated_price: false,
         },
 
         /**
@@ -69,9 +70,14 @@ define([
                 $('input[name="pack_option_hash"]').val(btoa(JSON.stringify(packOptionHashData)));
 
                 let data = this.options.packPrices[checkedOptionVal];
-
                 if (data.hasOwnProperty('price')) {
-                    $('.price-wrapper  > .price').text(data.price);
+                    var priceDisplay = data.price;
+                    if( this.options.display_calculated_price ) {
+                        if (data.hasOwnProperty('qty_price')) {
+                            priceDisplay = data.qty_price;
+                        }
+                    }
+                    $('.price-wrapper  > .price').text(priceDisplay);
                 }
                 if (data.hasOwnProperty('base_price')) {
                     $('#price-excluding-tax-product-price-'+productId + ' > .price').text(data.base_price);

@@ -17,6 +17,7 @@
             <settings>
                 <option_display_type>price</option_display_type>
                 <special_price_calc>min</special_price_calc>
+                <pdp_display_calculated_price>0</pdp_display_calculated_price>
             </settings>
         </product_pack>
     </default>
